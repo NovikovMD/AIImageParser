@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: llm-image-parser
+  ai:
+    model:
+      chat: openai
+    openai:
+      base-url: http://localhost:11434
+      api-key: no_key
+      chat:
+        options:
+          model: gemma3n:e4b
+          max-tokens: 100
+
+tesseract:
+  api:
+    url: http://localhost:5000

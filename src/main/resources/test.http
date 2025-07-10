@@ -1,0 +1,14 @@
+# Call Ollama API
+POST http://localhost:11434/api/generate
+Content-Type: application/json
+
+{
+  "model": "gemma3n:e4b",
+  "prompt": "Why is the sky blue?",
+  "stream": false
+}
+
+###
+# Call a test endpoint
+GET http://localhost:8080/test
+

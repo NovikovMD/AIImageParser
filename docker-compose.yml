@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  tesseract-api:
+    build:
+      context: .
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  ollama:
+    image: ollama/ollama:0.9.6
+    container_name: ollama
+    volumes:
+      - ./ollama_entrypoint.sh:/ollama_entrypoint.sh
+    ports:
+      - "11434:11434"
+    environment:
+      - LLM_MODEL_VERSION=gemma3n:e4b
+    entrypoint: ["/bin/bash", "/ollama_entrypoint.sh"]
